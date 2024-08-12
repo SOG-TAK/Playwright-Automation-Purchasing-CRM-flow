@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, AlreadyAppliedPage } from '../app/page/index';
+import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, GetValuationPage } from '../app/page/index';
 
 /** Test Case 1: Verify Input Blocks Presence
 - Preconditions: None
@@ -114,8 +114,8 @@ test('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ page }
   await bikeConditionPage.selectCondition('4 - Good')
   await bikeConditionPage.clickbikeValuatioButton()
 
-  const alreadyAppliedPage = new AlreadyAppliedPage(page)
-  await expect (await alreadyAppliedPage.pageTitle).toBeVisible()
-  await expect (await alreadyAppliedPage.pageTitle).toHaveText('Looks Like You Have Already  Requested A Valuation')
+  const getValuationPage = new GetValuationPage(page)
+  await expect (await getValuationPage.pageTitle).toBeVisible()
+  await expect (await getValuationPage.pageTitle).toHaveText('Looks Like You Have Already  Requested A Valuation')
 });
 

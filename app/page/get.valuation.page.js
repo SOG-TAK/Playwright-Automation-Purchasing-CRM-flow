@@ -1,6 +1,6 @@
 import { App } from './page.holder'
 
-export class AlreadyAppliedPage extends App {
+export class GetValuationPage extends App {
 
  constructor(page) {
   super(page)
