@@ -1,0 +1,1 @@
+export { CookiesWindow } from './cookies.modal.component';
