@@ -12,8 +12,8 @@ get bikeConditionTitle(){
 get serviseHistorySelectField(){
     return this.page.locator('select[name="serviceHistory"]')
 }
-get hasPanniersButtonYes(){
-    return this.page.locator('button[name="hasPanniers"][label="Yes"]')
+get hasPanniersButtonNo(){
+    return this.page.locator('button[name="hasPanniers"][label="No"]')
 }
 get reasonForSellingSelectField(){
     return this.page.locator('select[name="reasonForSelling"]')
@@ -31,8 +31,8 @@ async selectHistory(text){
     await this.serviseHistorySelectField.selectOption(text)
 }
 
-async clickHasPanniersButtonYes(){
-    await this.hasPanniersButtonYes.click()
+async clickHasPanniersButtonNo(){
+    await this.hasPanniersButtonNo.click()
 }
 async selectReasonForSellingSelectField(text){
     await this.reasonForSellingSelectField.selectOption(text);

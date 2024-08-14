@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, GetValuationPage } from '../app/page/index';
+import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, GetLivePricePage,YourAddressPage,DocumentationPage } from '../app/page/index';
 
 /** Test Case 1: Verify Input Blocks Presence
 - Preconditions: None
@@ -91,31 +91,74 @@ test('Test Case 3', async ({ page }) => {
 
 });
 test('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ page }) => {
-
   const homePage = new HomePage(page)
   await homePage.open()
   await homePage.cookiesWindow.clickAcceptCookiesButton()
-  await homePage.setEnterYourRegField('ND18WYK')
+  await homePage.setEnterYourRegField('YM15WDC')
   await homePage.setEnterMileageField('1000')
   await homePage.clickValueMyBikeButton()
 
   const yourDitailPage = new YourDitailPage(page)
   await expect (await yourDitailPage.tellUsTitle).toBeVisible()
-  await yourDitailPage.setNameField('test')
-  await yourDitailPage.setEmailField('test@gmail.com')
-  await yourDitailPage.setPhoneField('07123456789')
+  expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
+});
+test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) => {
+  const homePage = new HomePage(page)
+  await homePage.open()
+  await homePage.cookiesWindow.clickAcceptCookiesButton()
+  await homePage.setEnterYourRegField('YM15WDC')
+  await homePage.setEnterMileageField('1000')
+  await homePage.clickValueMyBikeButton()
+
+  const yourDitailPage = new YourDitailPage(page)
+  await expect (await yourDitailPage.tellUsTitle).toBeVisible()
+  expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
+
+  await yourDitailPage.setNameField('test12452')
+  await yourDitailPage.setEmailField('test3121@gmail.com')
+  await yourDitailPage.setPhoneField('07112456451')
   await yourDitailPage.clickBikeValuatioButton()
 
   const bikeConditionPage = new BikeConditionPage(page)
   await expect (await bikeConditionPage.bikeConditionTitle).toBeVisible()
   await bikeConditionPage.selectHistory('Full History')
-  await bikeConditionPage.clickHasPanniersButtonYes()
+  expect(page.url()).toBe('https://staging.webuyanybike.com/form-3/')
+  await bikeConditionPage.clickHasPanniersButtonNo()
   await bikeConditionPage.selectReasonForSellingSelectField('I need to sell as I want another bike')
   await bikeConditionPage.selectCondition('4 - Good')
   await bikeConditionPage.clickbikeValuatioButton()
 
-  const getValuationPage = new GetValuationPage(page)
-  await expect (await getValuationPage.pageTitle).toBeVisible()
-  await expect (await getValuationPage.pageTitle).toHaveText('Looks Like You Have Already  Requested A Valuation')
+  const getLivePricePage = new GetLivePricePage(page)
+  await expect (await getLivePricePage.yourValuationIsTitle).toBeVisible()
+  await expect (await getLivePricePage.yourValuationIsTitle).toContainText('Your valuation')
+  expect(page.url()).toBe('https://staging.webuyanybike.com/get-quote/live-price/')
+  await getLivePricePage.clickFirstDateButton()
+  await getLivePricePage.clickContinueButton()
+  await expect (await getLivePricePage.thankYouTitle).toBeVisible()
+  await expect (await getLivePricePage.thankYouTitle).toHaveText('Thank you!')
+  getLivePricePage.clickConFirmBikeConditionButton()
+
+ const yourAddressPage = new YourAddressPage(page)
+ await expect (await yourAddressPage.yourAddressPageTitle).toBeVisible()
+ await expect (await yourAddressPage.yourAddressPageTitle).toHaveText('Where Shall We Collect Your Motorbike?')
+ await yourAddressPage.setEnterYourPoscodeField('se3 0rl')
+ await yourAddressPage.clickEnterYourPoscodeSearchButton()
+ await yourAddressPage.clickFirstAdressInTheList()
+ await yourAddressPage.selectCountry('London')
+ await yourAddressPage.clickSaveAddressButton()
+
+ const documentationPage = new DocumentationPage(page)
+ await expect (await documentationPage.yourLogBookTitle).toBeVisible()
+ await expect (await documentationPage.yourLogBookTitle).toHaveText('Your Logbook')
+ await documentationPage.clicklogBookIsInoYourName('Yes')
+ await documentationPage.clickIsAddressDifferentToTheCollectionAddress('No')
+ await documentationPage.clickHaveProofOfID('Yes')
+ await documentationPage.clickIsLogbookMatchEngineOnTheBike('Yes')
+ await documentationPage.clickIsTheBikeAnImport('No')
+ await documentationPage.clickIsReputableGarageOrDealer('Yes')
+ await documentationPage.clickHaveTwoKeys('Yes')
+ await documentationPage.clickDoesRequireRedKey('No')
+ await documentationPage.clickContinueButton()
 });
+
 

@@ -3,7 +3,7 @@ Playwright Automation POC - Happy path flow
 # Install project to the new folder or pc
 1. Install NodeJs
 2. Clone repo
-3.Install dependencies  
+3. Install dependencies  
 
 # Run tests locally test 
 *Run* test headless  - type in the terminal 
@@ -15,9 +15,7 @@ Playwright Automation POC - Happy path flow
 app
 page - keep all page with locators and methods
 component - keep all global component locator and methods
-
-Tests folder
-keep all tests
+Tests folder - keep all tests
 
 
 
