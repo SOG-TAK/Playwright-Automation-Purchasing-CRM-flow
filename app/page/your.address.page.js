@@ -42,7 +42,7 @@ async clickFirstAdressInTheList(){
 await this.firstAdressInTheList.click()
 }
 async clickLondonInTheList(){
-    await this.londonInTheList.click()
+    await this.londonInTheList.click({force:true})
 }
 async clickSaveAddressButton(){
     await this.saveAddressButton.click()

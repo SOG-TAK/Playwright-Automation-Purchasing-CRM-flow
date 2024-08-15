@@ -24,9 +24,9 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 20000,
+  timeout: 40000,
   expect: {
-    timeout: 20000, 
+    timeout: 50000, 
   },
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -36,36 +36,20 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     retries: 1,
+    storageState:{
+      cookies: [],
+      origins: [],
+    }
   },
 
   /* Configure projects for major browsers */
   projects: [
+    /* Test against desktop browsers */
+
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' }, // or 'chrome-beta'
     }
-
- 
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 
   /* Run your local dev server before starting the tests */

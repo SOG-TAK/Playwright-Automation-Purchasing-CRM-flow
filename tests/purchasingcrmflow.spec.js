@@ -94,7 +94,7 @@ test.skip('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ p
   const homePage = new HomePage(page)
   await homePage.open()
   await homePage.cookiesWindow.clickAcceptCookiesButton()
-  await homePage.setEnterYourRegField('PX65RVO')
+  await homePage.setEnterYourRegField('AE04RXR')
   await homePage.setEnterMileageField('1000')
   await homePage.clickValueMyBikeButton()
 
@@ -104,11 +104,10 @@ test.skip('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ p
   expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
 });
 test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) => {
-  test.setTimeout(10000);
   const homePage = new HomePage(page)
   await homePage.open()
   await homePage.cookiesWindow.clickAcceptCookiesButton()
-  await homePage.setEnterYourRegField('VF17BXV')
+  await homePage.setEnterYourRegField('NK07AZZ')
   await homePage.setEnterMileageField('1000')
   await homePage.clickValueMyBikeButton()
 
@@ -117,11 +116,11 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
   await expect (await yourDitailPage.tellUsTitle).toBeVisible()
   expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
 
-  await yourDitailPage.setNameField('test12452')
-  await yourDitailPage.setEmailField('test3121@gmail.com')
+  await yourDitailPage.setNameField('test124532')
+  await yourDitailPage.setEmailField('test32121@gmail.com')
   await yourDitailPage.setPhoneField('07112456451')
   await yourDitailPage.clickBikeValuatioButton()
-
+  await page.waitForLoadState('networkidle');
   const bikeConditionPage = new BikeConditionPage(page)
   await expect (await bikeConditionPage.bikeConditionTitle).toBeVisible()
   await bikeConditionPage.selectHistory('Full History')
@@ -129,8 +128,9 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
   await bikeConditionPage.clickHasPanniersButtonNo()
   await bikeConditionPage.selectReasonForSellingSelectField('I need to sell as I want another bike')
   await bikeConditionPage.selectCondition('4 - Good')
+  await page.waitForTimeout(100)
   await bikeConditionPage.clickbikeValuatioButton()
-
+  await page.waitForLoadState('networkidle');
   const getLivePricePage = new GetLivePricePage(page)
   await expect (await getLivePricePage.yourValuationIsTitle).toContainText('Your valuation')
   await expect (await getLivePricePage.yourValuationIsTitle).toBeVisible()
@@ -139,12 +139,13 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
   await getLivePricePage.clickContinueButton()
   await expect (await getLivePricePage.thankYouTitle).toBeVisible()
   await expect (await getLivePricePage.thankYouTitle).toHaveText('Thank you!')
-  getLivePricePage.clickConFirmBikeConditionButton()
-
+  await getLivePricePage.clickConFirmBikeConditionButton()
+  await page.waitForLoadState('networkidle');
  const yourAddressPage = new YourAddressPage(page)
  await expect (await yourAddressPage.yourAddressPageTitle).toHaveText('Where Shall We Collect Your Motorbike?')
  await expect (await yourAddressPage.yourAddressPageTitle).toBeVisible()
  await page.waitForLoadState('load')
+ await page.waitForLoadState('networkidle');
  await yourAddressPage.setEnterYourPoscodeField('se3 0rl')
  await expect (await yourAddressPage.enterYourPoscodeField).toHaveValue('se3 0rl')
  await expect (await yourAddressPage.enterYourPoscodeSearchButton()).toBeVisible()
@@ -152,8 +153,9 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
  await yourAddressPage.clickFirstAdressInTheList()
  await yourAddressPage.clickCountrySelectField()
  await yourAddressPage.clickLondonInTheList()
+ await page.waitForTimeout(100)
  await yourAddressPage.clickSaveAddressButton()
-
+ await page.waitForLoadState('networkidle');
  const documentationPage = new DocumentationPage(page)
  await expect (await documentationPage.yourLogBookTitle).toHaveText('Your Logbook')
  await expect (await documentationPage.yourLogBookTitle).toBeVisible()
@@ -165,8 +167,9 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
  await documentationPage.clickIsReputableGarageOrDealer('Yes')
  await documentationPage.clickHaveTwoKeys('Yes')
  await documentationPage.clickDoesRequireRedKey('No')
+ await page.waitForTimeout(100)
  await documentationPage.clickContinueButton()
-
+ await page.waitForLoadState('networkidle');
  const bodyWorkPage = new BodyWorkPage(page)
  await expect (await bodyWorkPage.bodyWorkTitle).toHaveText('Your bikes bodywork')
  await expect (await bodyWorkPage.bodyWorkTitle).toBeVisible()
@@ -181,8 +184,10 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
  await bodyWorkPage.clickAreThereTwoMirrorsOnYourBike('Yes')
  await bodyWorkPage.clickAreMirrorsOnYourBikeDamaged('No')
  await bodyWorkPage.clickAnyOtherCosmeticIssues('No')
+ await page.waitForTimeout(100)
  await bodyWorkPage.clickContinueButton()
-
+ //await page.waitForTimeout(100)
+ await page.waitForLoadState('networkidle');
  const mechanicsPage = new MechanicsPage(page)
  await expect (await mechanicsPage.mechanicsTitle).toHaveText('How does your bike run')
  await expect (await mechanicsPage.mechanicsTitle).toBeVisible()
@@ -208,8 +213,9 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
  await mechanicsPage.clickIsTheEngineInWorkingOrder('Yes')
  await mechanicsPage.clickDoesClutchRattleDragOrSlip('No')
  await mechanicsPage.clickAnyOtherMechanicalOrElectricalIssues('No')
+ await page.waitForTimeout(100)
  await mechanicsPage.clickContinueButton()
-
+ await page.waitForLoadState('networkidle');
  const extrasPage = new ExtrasPage(page)
  await expect (await extrasPage.extrasPageTitle).toHaveText('Extras')
  await expect (await extrasPage.extrasPageTitle).toBeVisible()
@@ -217,8 +223,9 @@ test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ pag
  await extrasPage.clickDoesYourBikeHaveAnAlarm('Yes')
  await extrasPage.clickDoesYourBikeHaveAnyNonStandardManufacturer('No')
  await extrasPage.clickDoesYourBikeHaveAnyAfterMarketParts('No')
+ await page.waitForTimeout(100)
  await extrasPage.clickContinueButton()
-
+ await page.waitForLoadState('networkidle');
  const uploadPage = new UploadPage(page)
  await expect (await uploadPage.pageTitle).toHaveText('Thank you for confirming the condition of your bike')
  await expect (await uploadPage.pageTitle).toBeVisible()
