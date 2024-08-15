@@ -12,33 +12,43 @@ get yourAddressPageTitle(){
 get enterYourPoscodeField(){
     return this.page.locator('input[placeholder="Postcode..."]')
 }
-get enterYourPoscodeSearchButton(){
-    return this.page.locator('button.secondary-btn.css-c9ffho')
+ enterYourPoscodeSearchButton(){
+    return this.page.locator('button.MuiButtonBase-root.MuiButton-root.MuiLoadingButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeSmall.MuiButton-textSizeSmall.secondary-btn.css-c9ffho:not([disabled])')
 }
 get firstAdressInTheList(){
     return this.page.locator('(//ul[@class="MuiAutocomplete-listbox css-1xs8iq0"]//li)[1]')
 }
+
 get saveAddressButton(){
     return this.page.locator('button.MuiButton-fullWidth.css-4kns4v')
 }
 get countrySelectField(){
-    return this.page.locator('input[class="MuiSelect-nativeInput css-1k3x8v3"]')
+    return this.page.locator('div[class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth  css-5vwx6a"]')
 }
-
+get londonInTheList(){
+    return this.page.locator('//li[text()="London"]')
+}
 async setEnterYourPoscodeField(text){
     await this.enterYourPoscodeField.fill(text)
+    await this.enterYourPoscodeField.press('Enter')
 }
 async clickEnterYourPoscodeSearchButton(){
-    await this.enterYourPoscodeSearchButton.click()
+    await this.enterYourPoscodeSearchButton().waitFor({ state: 'visible' }); 
+    await this.enterYourPoscodeSearchButton().focus()
+    await this.enterYourPoscodeSearchButton().click({ position: { x: 20, y: 20 } })
 }
 async clickFirstAdressInTheList(){
-    await this.firstAdressInTheList.click()
+
+await this.firstAdressInTheList.click()
+}
+async clickLondonInTheList(){
+    await this.londonInTheList.click()
 }
 async clickSaveAddressButton(){
     await this.saveAddressButton.click()
 }
-async selectCountry(text){
-    await this.countrySelectField.selectOption(text)
+async clickCountrySelectField(){
+    await this.countrySelectField.click()
 }
 
 

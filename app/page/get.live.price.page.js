@@ -10,7 +10,7 @@ get yourValuationIsTitle(){
     return this.page.locator('h3[class="styles__StyledH3-sc-40vi4c-3 fddqSl"]')
 }
 get firstDateButton(){
-    return this.page.locator('//button[contains(@class,"MuiButton-sizeMedium MuiButton-containedSizeMedium styles__MuiButton-sc-1bzz92t-0")]')
+    return this.page.locator('(//button[contains(@class,"MuiButton-sizeMedium MuiButton-containedSizeMedium styles__MuiButton-sc-1bzz92t-0")])[1]')
 }
 get continueButton(){
     return this.page.locator('button.fooTMZ ')

@@ -65,8 +65,8 @@ async clickHaveTwoKeys(text){
 async clickDoesRequireRedKey(text){
     await this.doesRequireRedKey(text).click()
 }
-async clickContinueButton(text){
-    await this.continueButton(text).click()
+async clickContinueButton(){
+    await this.continueButton.click()
 }
 
 
