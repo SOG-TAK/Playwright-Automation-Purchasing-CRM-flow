@@ -103,7 +103,7 @@ test.skip('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ p
   await expect (await yourDitailPage.tellUsTitle).toBeVisible()
   expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
 });
-test.only('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) => {
+test('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) => {
   const homePage = new HomePage(page)
   await homePage.open()
   await homePage.cookiesWindow.clickAcceptCookiesButton()
