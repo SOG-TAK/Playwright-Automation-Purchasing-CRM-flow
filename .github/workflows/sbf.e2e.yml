@@ -1,0 +1,37 @@
+name: Playwright Tests
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow]
+    
+run-name: ${{ github.actor }} run sbf e2e tests
+
+jobs:
+    test:
+        name: Run Playwright Tests
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps
+
+            - name: Run Playwright tests
+              run: npx playwright test --workers=1
+
+            - name: Upload test results
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: playwright-report
+                  path: playwright-report
+                  retention-days: 14
