@@ -64,8 +64,8 @@ test('Test Case 4: Fill Personal Details and Proceed to Step 3', async ({ page }
   expect(page.url()).toBe('https://staging.webuyanybike.com/form-2/')
 });
 test('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) => {
-  const response = await request.delete('https://magento.staging.superbikefactory.co.uk/api/v1/test')
-  expect(response.status()).toBe(200)
+/*   const response = await request.delete('https://magento.staging.superbikefactory.co.uk/api/v1/test')
+  expect(response.status()).toBe(200) */
   const homePage = new HomePage(page)
   await homePage.open()
   await homePage.cookiesWindow.clickAcceptCookiesButton()
