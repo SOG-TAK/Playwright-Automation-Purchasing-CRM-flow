@@ -4,9 +4,12 @@
   "main": "index.js",
   "scripts": {
     "test":"npx playwright test",
-    "test:ui":"npx playwright test --ui",
-    "test:debug":"npx playwright test --debug",
-    "report":"npx playwright show-report"
+    "test-ui":"npx playwright test --headed",
+    "test-debug":"npx playwright test --debug",
+    "report":"npx playwright show-report",
+    "crm-test":"npx playwright test --config=playwright.config.geoffworkshop.js",
+    "crm-debug":"npx playwright test --config=playwright.config.geoffworkshop.js --debug",
+    "crm-ui":"npx playwright test --config=playwright.config.geoffworkshop.js --headed"
   },
   "keywords": [],
   "author": "",
