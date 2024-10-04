@@ -30,8 +30,6 @@ module.exports = defineConfig({
   },
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://staging.webuyanybike.com',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -45,11 +43,24 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     /* Test against desktop browsers */
-
     {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' }, // or 'chrome-beta'
-    }
+      name: 'Purchasingflow',
+      testDir: 'tests/purchasingcrmflow',
+      use: {
+        ...devices['Desktop Chrome'], 
+        channel: 'chrome',
+        baseURL: 'https://staging.webuyanybike.com',
+      }
+    },
+    {
+      name: 'Geoffworkshop',
+      testDir: 'tests/geoffworkshop',
+      use: {
+        ...devices['Desktop Chrome'], 
+        channel: 'chrome',
+        baseURL: 'https://staging.geoff.superbikefactory.co.uk',
+      }
+    },
   ],
 
   /* Run your local dev server before starting the tests */

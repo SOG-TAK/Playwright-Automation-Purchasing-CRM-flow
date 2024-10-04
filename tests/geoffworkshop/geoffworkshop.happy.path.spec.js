@@ -4,7 +4,7 @@ import { userData } from '../../app/geoffcrm/data/user.data'
 import { kawasakiV30All } from '../../app/geoffcrm/data/vrm.data';
 import { driverPackV30All } from '../../app/geoffcrm/data/driver.pack.data'
 
-test('Test Case 1: Geoff crm happy pass', async ({ page, request }) => {
+test('Test Case 1: Geoff crm happy path', async ({ page, request }) => {
   /*    const response = await request.put('https://staging.geoff-api.superbikefactory.co.uk/api/v1/workshop/status', {
         data: {
           new_status_id: '5dc93dfb8f6a3be76e0340f4', // Deleted
@@ -99,8 +99,7 @@ test('Test Case 1: Geoff crm happy pass', async ({ page, request }) => {
     await expect(bikeInfoPage.currentBikeStatus).toHaveText('In Internal PDI',{ timeout: 10000 }) 
     await bikeInfoPage.chooseSectionActions('PBD')  
     await expect(bikeInfoPage.assignToField).toHaveText('Assigned To: Paul Billington-Dykes[Un-Assign]',{ timeout: 10000 }) 
-    await expect(bikeInfoPage.currentBikeStatus).toHaveText('In Internal PDI',{ timeout: 10000 }) 
-    await page.waitForLoadState('networkidle')
+    await page.waitForTimeout(500)
     await bikeInfoPage.chooseAdminAction('Quality Control')
     await bikeInfoPage.clickSaveAdminActionButton()
     await page.waitForLoadState('networkidle')

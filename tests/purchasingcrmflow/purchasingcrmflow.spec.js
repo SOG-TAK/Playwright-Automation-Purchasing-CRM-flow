@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, GetLivePricePage,YourAddressPage,DocumentationPage,BodyWorkPage,MechanicsPage,ExtrasPage,UploadPage,ThankYouPage} from '../app/page/index';
+import { HomePage, YourDitailPage, BikeDitailPage, BikeConditionPage, GetLivePricePage,YourAddressPage,DocumentationPage,BodyWorkPage,MechanicsPage,ExtrasPage,UploadPage,ThankYouPage} from '../../app/page/index';
 
 test('Test Case 1: Verify Input Blocks Presence', async ({ page }) => {
   const homePage = new HomePage(page)
@@ -148,7 +148,7 @@ test('Scenario 5: Fill in Bike Details and Proceed to Step 5', async ({ page }) 
  await bodyWorkPage.clickAnyOtherCosmeticIssues('No')
  await page.waitForTimeout(100)
  await bodyWorkPage.clickContinueButton()
- //await page.waitForTimeout(100)
+ await page.waitForTimeout(100)
  await page.waitForLoadState('networkidle');
  const mechanicsPage = new MechanicsPage(page)
  await expect (await mechanicsPage.mechanicsTitle).toHaveText('How does your bike run')

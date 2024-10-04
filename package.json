@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test":"npx playwright test",
-    "test-ui":"npx playwright test --headed",
-    "test-debug":"npx playwright test --debug",
-    "report":"npx playwright show-report",
-    "crm-test":"npx playwright test --config=playwright.config.geoffworkshop.js",
-    "crm-debug":"npx playwright test --config=playwright.config.geoffworkshop.js --debug",
-    "crm-ui":"npx playwright test --config=playwright.config.geoffworkshop.js --headed"
+    "test": "npx playwright test",
+    "test-ui": "npx playwright test --headed",
+    "test-debug": "npx playwright test --debug",
+    "report": "npx playwright show-report",
+    "crm-test": "npx playwright test --project=Geoffworkshop",
+    "crm-debug": "npx playwright test --project=Geoffworkshop --debug",
+    "crm-ui": "npx playwright test --project=Geoffworkshop --headed",
+    "shop-test": "npx playwright test --project=Purchasingflow",
+    "shop-debug": "npx playwright test --project=Purchasingflow --debug",
+    "shop-ui": "npx playwright test --project=Purchasingflow --headed"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +21,8 @@
   "devDependencies": {
     "@playwright/test": "^1.46.0",
     "@types/node": "^22.1.0"
+  },
+  "dependencies": {
+    "playwright": "^1.47.2"
   }
 }
