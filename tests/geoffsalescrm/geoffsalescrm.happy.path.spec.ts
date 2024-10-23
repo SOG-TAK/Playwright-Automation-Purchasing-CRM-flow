@@ -5,7 +5,7 @@ import { userData } from '../../app/geoffcrm/data/user.data'
 import { bikeData } from '../../app/geoffsalescrm/data/bike.data';
 
 
-test.only('Test Case 1: Happy Path Journey - Geoff - Sales CRM', async ({ page }) => {
+test('Test Case 1: Happy Path Journey - Geoff - Sales CRM', async ({ page }) => {
     const salesHomePage = new SalesHomePage(page)
     await salesHomePage.open()
     await salesHomePage.clickSearchFormTitle()
