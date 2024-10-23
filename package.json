@@ -12,7 +12,11 @@
     "crm-ui": "npx playwright test --project=Geoffworkshop --headed",
     "shop-test": "npx playwright test --project=Purchasingflow",
     "shop-debug": "npx playwright test --project=Purchasingflow --debug",
-    "shop-ui": "npx playwright test --project=Purchasingflow --headed"
+    "shop-ui": "npx playwright test --project=Purchasingflow --headed",
+    "sales-ui": "npx playwright test --project=GeoffSalesCRM --headed",
+    "sales-test": "npx playwright test --project=GeoffSalesCRM",
+    "sales-debug": "npx playwright test --project=GeoffSalesCRM --debug"
+        
   },
   "keywords": [],
   "author": "",

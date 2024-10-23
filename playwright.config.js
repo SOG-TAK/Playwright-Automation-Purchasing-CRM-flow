@@ -61,6 +61,15 @@ module.exports = defineConfig({
         baseURL: 'https://staging.geoff.superbikefactory.co.uk',
       }
     },
+    {
+      name: 'GeoffSalesCRM',
+      testDir: 'tests/geoffsalescrm',
+      use: {
+        ...devices['Desktop Chrome'], 
+        channel: 'chrome',
+        baseURL: 'https://mcstaging.abtesting.superbikefactory.co.uk',
+      }
+    },
   ],
 
   /* Run your local dev server before starting the tests */
