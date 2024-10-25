@@ -30,8 +30,11 @@ export class SendAnEnquiryForm extends Component {
     async setBikeEmailField(text) {
         await this.bikeEmailField.type(text)
     }
-    async setBikePhoneNumberField(text) {
-        await this.bikePhoneNumberField.type(text)
+    async setRandomBikePhoneNumberField() {
+        const mobilePrefix = '07';
+        const firstPart = Math.floor(1000 + Math.random() * 9000);
+        const secondPart = Math.floor(100000 + Math.random() * 900000);
+        await this.bikePhoneNumberField.type(`${mobilePrefix}${firstPart} ${secondPart}`)
     }
 
     async clickSubminYourAnEnquiryButton() {

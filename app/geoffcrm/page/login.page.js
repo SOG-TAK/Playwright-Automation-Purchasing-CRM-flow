@@ -4,6 +4,7 @@ export class LoginPage extends App {
  constructor(page) {
   super(page)
  }
+ fullPath = 'https://staging.geoff.superbikefactory.co.uk'
  get emailField() {
     return this.page.locator('input[name="emailAddress"]');
  }
@@ -21,5 +22,8 @@ export class LoginPage extends App {
  
  async open() {
   await this.page.goto('/');
+ }
+ async openFullPath(){
+    await this.page.goto(this.fullPath)
  }
 }

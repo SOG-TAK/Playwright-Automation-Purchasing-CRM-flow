@@ -16,7 +16,6 @@
     "sales-ui": "npx playwright test --project=GeoffSalesCRM --headed",
     "sales-test": "npx playwright test --project=GeoffSalesCRM",
     "sales-debug": "npx playwright test --project=GeoffSalesCRM --debug"
-        
   },
   "keywords": [],
   "author": "",
@@ -27,6 +26,7 @@
     "@types/node": "^22.1.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.0.3",
     "playwright": "^1.47.2"
   }
 }

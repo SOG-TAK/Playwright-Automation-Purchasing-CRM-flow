@@ -31,7 +31,7 @@ export class CrmDashboardPage extends App {
       await this.page.goto('/secure/sales/crm-dashboard');
    }
    async clickSalesButton() {
-      await this.salesButton(name).click()
+      await this.salesButton.click()
    }
    async clickSalesDropdownItem(name) {
       await this.salesDropdownItem(name).click()
