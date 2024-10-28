@@ -48,7 +48,6 @@ module.exports = defineConfig({
       testDir: 'tests/purchasingcrmflow',
       use: {
         ...devices['Desktop Chrome'], 
-        channel: 'chrome',
         baseURL: 'https://staging.webuyanybike.com',
       }
     },
@@ -57,7 +56,6 @@ module.exports = defineConfig({
       testDir: 'tests/geoffworkshop',
       use: {
         ...devices['Desktop Chrome'], 
-        channel: 'chrome',
         baseURL: 'https://staging.geoff.superbikefactory.co.uk',
       }
     },
@@ -66,7 +64,6 @@ module.exports = defineConfig({
       testDir: 'tests/geoffsalescrm',
       use: {
         ...devices['Desktop Chrome'], 
-        channel: 'chrome',
         baseURL: 'https://mcstaging.abtesting.superbikefactory.co.uk',
       }
     },
